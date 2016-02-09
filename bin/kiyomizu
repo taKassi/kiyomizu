@@ -2,5 +2,7 @@
 
 require 'kiyomizu'
 
-greeting = Kiyomizu.greet
-puts greeting
+file_name = "#{Dir.pwd}/htmls/document.txt"
+site = Kiyomizu.scrape(file_name)
+
+Kiyomizu.create_csv(site)
