@@ -5,7 +5,8 @@ class TestKiyomizu < MiniTest::Unit::TestCase
     refute_nil ::Kiyomizu::VERSION
   end
 
-  def test_it_does_something_useful
-    assert false
+  def test_should_be_greeting
+    greeting = Kiyomizu.greet
+    assert_equal greeting, 'Hello! My name is "Kiyomizu".'
   end
 end
