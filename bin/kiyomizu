@@ -2,4 +2,5 @@
 
 require 'kiyomizu'
 
-Kiyomizu.greet
+greeting = Kiyomizu.greet
+puts greeting
