@@ -13,7 +13,7 @@ module Kiyomizu
   # SiteからHTMLを抽出してファイルへ
   def self.create_base_file(url)
     doc = Nokogiri::HTML(open(url))
-    file_name ="#{Dir.pwd}/htmls/document.txt"
+    file_name ="#{Dir.pwd}/htmls/#{time.now.strftime('%Y%m%d%H%M%S')}.txt"
     open(file_name, "w") do |file|
       file.puts doc
     end
@@ -56,8 +56,7 @@ module Kiyomizu
         csv << info
       end
     }
-    time_now = Time.now.strftime('%Y%m%d%H%M%S')
-    file_name = "#{Dir.pwd}/outputs/#{time_now}.csv"
+    file_name = "#{Dir.pwd}/outputs/#{Time.now.strftime('%Y%m%d%H%M%S')}.csv"
     open(file_name, "a") do |file|
       file.puts data
     end
