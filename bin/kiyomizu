@@ -2,7 +2,5 @@
 
 require 'kiyomizu'
 
-file_name = "#{Dir.pwd}/htmls/document.txt"
-site = Kiyomizu.scrape(file_name)
-
-Kiyomizu.create_csv(site)
+crawler = Kiyomizu.jbma_crawler
+puts crawler.greet

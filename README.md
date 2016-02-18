@@ -1,6 +1,6 @@
 # Kiyomizu
 
-TODO: Write a gem description
+オリジナルクローラー
 
 ## Installation
 
@@ -19,8 +19,18 @@ Or install it yourself as:
     $ gem install kiyomizu
 
 ## Usage
+```ruby
+crawler = Kiyomizu.XXXXXXX_crawler
+```
+対応したクローラーのインスタンス生成。
+### クローラー
+- Kiyomizu.j_bma_crawler
 
-TODO: Write usage instructions here
+### クラスメッソド
+```ruby
+Kiyomizu.create_csv
+```
+csvファイルの生成
 
 ## Contributing
 
