@@ -2,5 +2,5 @@
 
 require 'kiyomizu'
 
-crawler = Kiyomizu.jbma_crawler
+crawler = Kiyomizu.jbma
 puts crawler.greet

@@ -6,7 +6,7 @@ class TestKiyomizu < MiniTest::Unit::TestCase
   end
 
   def test_jbma_should_be_greeting
-    crawler = Kiyomizu.jbma_crawler
+    crawler = Kiyomizu.jbma
     assert_equal crawler.greet, 'Hello! This crawler is Bill Maintenance!!'
   end
 end

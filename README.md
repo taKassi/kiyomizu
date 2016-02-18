@@ -20,17 +20,18 @@ Or install it yourself as:
 
 ## Usage
 ```ruby
-crawler = Kiyomizu.XXXXXXX_crawler
+# 対応したクローラーのインスタンス生成。
+crawler = Kiyomizu."crawler_name"
+
+# クローラー達
+# * Kiyomizu.j_bma
 ```
-対応したクローラーのインスタンス生成。
-### クローラー
-- Kiyomizu.j_bma_crawler
 
 ### クラスメッソド
 ```ruby
+# csvファイルの生成
 Kiyomizu.create_csv
 ```
-csvファイルの生成
 
 ## Contributing
 

@@ -4,10 +4,10 @@ require "kiyomizu/version"
 
 module Kiyomizu
   # FileMaker Moduleの取り来み
-  include FileMaker
+  include Kiyomizu::FileMaker
 
-  # j_bma用のインスタンスを作成
-  def self.jbma_crawler
-    Crawlers::JBma.new
+  # jbma用のインスタンスを作成
+  def self.jbma
+    Kiyomizu::Crawlers::JBma.new
   end
 end
