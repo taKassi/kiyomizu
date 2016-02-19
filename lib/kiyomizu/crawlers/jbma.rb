@@ -1,9 +1,12 @@
 require "nokogiri"
 require "open-uri"
+require "kiyomizu/file_maker"
 
 module Kiyomizu
   module Crawlers
     class JBma
+
+      include Kiyomizu::FileMaker
 
       def initialize
         @name = "Bill Maintenance"
@@ -53,5 +56,5 @@ module Kiyomizu
       end
     end
   end
-  
+
 end

@@ -3,4 +3,4 @@
 require 'kiyomizu'
 
 crawler = Kiyomizu.jbma
-puts crawler.greet
+puts crawler.methods

@@ -20,17 +20,20 @@ Or install it yourself as:
 
 ## Usage
 ```ruby
-# 対応したクローラーのインスタンス生成。
-crawler = Kiyomizu."crawler_name"
 
-# クローラー達
-# * Kiyomizu.j_bma
-```
+# 使用するクローラーのインスタンス作成
+crawler = Kiyomizu.crawler_name
 
-### クラスメッソド
-```ruby
-# csvファイルの生成
-Kiyomizu.create_csv
+# 対象サイトのHTMLソースコードをファイルへ保存
+crawler.create_base_file
+
+# ファイルを解析し要素を抽出
+crawler.scrape
+
+# CSVファイルを出力
+crawler.create_csv
+
+
 ```
 
 ## Contributing
