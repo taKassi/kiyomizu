@@ -5,8 +5,8 @@ module Kiyomizu
     class TownPage < Kiyomizu::Crawlers::Common
 
       # ソースコードの解析
-      def scrape(file_path)
-        doc = Nokogiri::HTML(open(file_path))
+      def scrape(file_name_in_htmls_derectory)
+        doc = Nokogiri::HTML(open("#{Dir.pwd}/htmls/#{file_name_in_htmls_derectory}"))
 
         infomation = []
         doc.css().each do |node|

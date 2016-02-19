@@ -3,6 +3,5 @@
 require 'kiyomizu'
 
 crawler = Kiyomizu.jbma
-file_path = "#{Dir.pwd}/htmls/JBma_20160220011451.txt"
-factor = crawler.scrape(file_path)
+factor = crawler.scrape("JBma_20160220011451.txt")
 crawler.create_csv(factor)
