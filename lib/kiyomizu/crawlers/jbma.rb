@@ -1,33 +1,12 @@
-require "nokogiri"
-require "open-uri"
-require "kiyomizu/file_maker"
+require "kiyomizu/crawlers/common"
 
 module Kiyomizu
   module Crawlers
-    class JBma
+    class JBma < Kiyomizu::Crawlers::Common
 
-      include Kiyomizu::FileMaker
-
-      def initialize
-        @name = "Bill Maintenance"
-      end
-      # あいさつしよう
-      def greet
-        "Hello! This crawler is #{@name}!!"
-      end
-
-      # SiteからHTMLを抽出してファイルへ
-      def create_base_file(url)
-        doc = Nokogiri::HTML(open(url))
-        file_name ="#{Dir.pwd}/htmls/#{time.now.strftime('%Y%m%d%H%M%S')}.txt"
-        open(file_name, "w") do |file|
-          file.puts doc
-        end
-      end
-
-      #
-      def scrape(url_or_file_path)
-        doc = Nokogiri::HTML(open(url_or_file_path))
+      # ソースコードの解析
+      def scrape(file_path)
+        doc = Nokogiri::HTML(open(file_path))
 
         infomation = []
         doc.css('div.box').each do |node|
@@ -56,5 +35,4 @@ module Kiyomizu
       end
     end
   end
-
 end
