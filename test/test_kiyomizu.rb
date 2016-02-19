@@ -5,8 +5,12 @@ class TestKiyomizu < MiniTest::Unit::TestCase
     refute_nil ::Kiyomizu::VERSION
   end
 
-  def test_jbma_should_be_greeting
-    crawler = Kiyomizu.jbma
-    assert_equal crawler.greet, 'Hello! This crawler is Bill Maintenance!!'
+  def test_should_be_greeting
+    jbma = Kiyomizu.jbma
+    townpage = Kiyomizu.townpage
+
+    assert_equal jbma.greet, 'Hello! this crawler is JBma!!'
+    assert_equal townpage.greet, 'Hello! this crawler is TownPage!!'
+
   end
 end

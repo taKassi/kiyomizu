@@ -1,4 +1,4 @@
-require "kiyomiz/crawlers/common"
+require "kiyomizu/crawlers/common"
 
 module Kiyomizu
   module Crawlers

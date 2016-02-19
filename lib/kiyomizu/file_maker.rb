@@ -4,7 +4,7 @@ module Kiyomizu
   module FileMaker
 
     # csvファイルを出力
-    def create_csv(array, title = "create_at")
+    def create_csv(array, title = self.name)
       headers = %w(名前 住所 TEL FAX)
       data = CSV.generate('', write_headers: true, headers: headers) { |csv|
         array.each do |info|
