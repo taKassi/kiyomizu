@@ -29,17 +29,40 @@ module Kiyomizu
 
         names.compact!
 
-        # 住所を抽出
-        addresses = doc.xpath('//*[@id="wrapAllInside"]/div/div[2]/div/div[2]/div/article/section/p[2]').text
-        addresses = addresses.split('住所')
-        addresses.delete_at(0)
+        # secitonの抽出
+        section = doc.css('section').text
+        section = section.split('住所')
 
-        addresses.map! do |address|
-          match = /(東京都.+)(地図.+)/.match(address)
-          match[1]
+        section.map! { | fact |
+          fact.strip.gsub(" ", "").gsub("\r", '').gsub("\n", "")
+        }
+
+        section.map! do |fact|
+          match = fact.match(/(東京都.+)TEL(.+?\d+(-|\d)\d+(-\d+))/)
         end
 
-        # TELの抽出
+        section.delete_at(0)
+        p section
+
+
+
+
+
+
+        # 住所を抽出
+        # addresses = doc.xpath('//*[@id="wrapAllInside"]/div/div[2]/div/div[2]/div/article/section/p[2]').text
+        # addresses = addresses.split('住所')
+        # addresses.delete_at(0)
+        #
+        # addresses.map! do |address|
+        #   match = /(東京都.+)(地図.+)/.match(address)
+        #   match[1]
+        # end
+        #
+        # # TELの抽出
+        # tels = doc.xpath('//*[@id="wrapAllInside"]/div/div[2]/div/div[2]/div/article/section/p').text
+        # tels = tels.split('TEL')
+        # p tels
 
 
         # FAXの抽出
