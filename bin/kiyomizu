@@ -2,6 +2,5 @@
 
 require 'kiyomizu'
 
-crawler = Kiyomizu.jbma
-factor = crawler.scrape("JBma_20160220011451.txt")
-crawler.create_csv(factor)
+crawler = Kiyomizu.townpage
+crawler.create_base_file("http://itp.ne.jp/tokyo/genre_dir/travel/pg/1/?sr=1&nad=1&num=50")
