@@ -3,4 +3,5 @@
 require 'kiyomizu'
 
 crawler = Kiyomizu.townpage
-crawler.create_base_file("http://itp.ne.jp/tokyo/genre_dir/travel/pg/1/?sr=1&nad=1&num=50")
+
+crawler.scrape('TownPage_20160220233415.txt')
