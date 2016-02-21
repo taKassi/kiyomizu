@@ -1,7 +1,3 @@
 #!/usr/bin/env ruby
 
 require 'kiyomizu'
-
-crawler = Kiyomizu.townpage
-
-p crawler.scrape('TownPage_20160220233415.txt')

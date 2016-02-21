@@ -20,7 +20,7 @@ module Kiyomizu
       end
 
       # SiteからHTMLを抽出してファイルへ
-      def create_base_file(url)
+      def copy_sorce(url)
         doc = Nokogiri::HTML(open(url))
 
         open(self.scraped_file_name, "w") do |file|

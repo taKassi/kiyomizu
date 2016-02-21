@@ -22,10 +22,11 @@ Or install it yourself as:
 ```ruby
 
 # 使用するクローラーのインスタンス作成
-crawler = Kiyomizu.crawler_name
+crawler = Kiyomizu.jbma
+crawler = Kiyomizu.townpage
 
 # 対象サイトのHTMLソースコードをファイルへ保存
-crawler.create_base_file
+crawler.copy_sorce
 
 # ファイルを解析し要素を抽出
 crawler.scrape

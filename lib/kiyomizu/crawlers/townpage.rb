@@ -5,13 +5,23 @@ module Kiyomizu
   module Crawlers
     class TownPage < Kiyomizu::Crawlers::Common
 
-      # Kiyomizu::Crawlers::Common#create_base_fileをオーバーライド
+      # Kiyomizu::Crawlers::Common#copy_sorceをオーバーライド
 
-      def create_base_file(url)
-        doc = Nokogiri::HTML(open(url))
+      def copy_sorce(urls)
+        options = { depth_limit: 0,
+                    skip_query_string: true,
+                    delay: 1 }
 
-        open(self.scraped_file_name, "a") do |file|
-          file.puts doc
+        Anemone::crawl(urls, options) do |anemone|
+          anemone.on_every_page do |page|
+            doc = Nokogiri::HTML.parse(page.body)
+
+            open(self.scraped_file_name, "a") do |file|
+              file.puts doc
+            end
+
+            puts "#{page.url}をコピー"
+          end
         end
       end
 
@@ -38,10 +48,10 @@ module Kiyomizu
         }
 
         sections.map! do |section|
-          section.match(/(東京都.+)TEL(.+?\d+(-|\d)\d+(-\d+))/)
+          section.match(/(.+都.+|.+道.+|.+府.+|.+県.+)TEL(.+?\d+(-|\d)\d+(-\d+))/)
         end
 
-        sections.delete_at(0)
+        sections.compact!
 
         # sectionsか住所を抽出
         addresses = sections.map { |section|
@@ -53,7 +63,8 @@ module Kiyomizu
           section[2].gsub("(代)", "")
          }
 
-         names.zip(addresses, tels)
+         info = names.zip(addresses, tels).uniq
+         info = info.delete_if  { |factor| factor[2] == nil }
       end
     end
   end
