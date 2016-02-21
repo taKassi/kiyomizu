@@ -15,7 +15,7 @@ module Kiyomizu
         end
       end
 
-      # ソースコードの解析
+      # ソースコードの解析して配列をかえす
       def scrape(file_name)
         doc = Nokogiri::HTML(open("#{Dir.pwd}/htmls/#{file_name}"))
 
@@ -30,46 +30,30 @@ module Kiyomizu
         names.compact!
 
         # secitonの抽出
-        section = doc.css('section').text
-        section = section.split('住所')
+        sections = doc.css('section').text
+        sections = sections.split('住所')
 
-        section.map! { | fact |
-          fact.strip.gsub(" ", "").gsub("\r", '').gsub("\n", "")
+        sections.map! { | section |
+          section.strip.gsub(" ", "").gsub("\r", '').gsub("\n", "")
         }
 
-        section.map! do |fact|
-          match = fact.match(/(東京都.+)TEL(.+?\d+(-|\d)\d+(-\d+))/)
+        sections.map! do |section|
+          section.match(/(東京都.+)TEL(.+?\d+(-|\d)\d+(-\d+))/)
         end
 
-        section.delete_at(0)
-        p section
+        sections.delete_at(0)
 
+        # sectionsか住所を抽出
+        addresses = sections.map { |section|
+                      section[1].gsub("地図・ナビ", "")
+                     }
 
+        #  sectionsからTEL情報を抽出
+        tels = sections.map { |section|
+          section[2].gsub("(代)", "")
+         }
 
-
-
-
-        # 住所を抽出
-        # addresses = doc.xpath('//*[@id="wrapAllInside"]/div/div[2]/div/div[2]/div/article/section/p[2]').text
-        # addresses = addresses.split('住所')
-        # addresses.delete_at(0)
-        #
-        # addresses.map! do |address|
-        #   match = /(東京都.+)(地図.+)/.match(address)
-        #   match[1]
-        # end
-        #
-        # # TELの抽出
-        # tels = doc.xpath('//*[@id="wrapAllInside"]/div/div[2]/div/div[2]/div/article/section/p').text
-        # tels = tels.split('TEL')
-        # p tels
-
-
-        # FAXの抽出
-
-        # 抽出した要素の配列をはinofmationへpush
-        # infomation << info
-        # infomation
+         names.zip(addresses, tels)
       end
     end
   end

@@ -4,4 +4,4 @@ require 'kiyomizu'
 
 crawler = Kiyomizu.townpage
 
-crawler.scrape('TownPage_20160220233415.txt')
+p crawler.scrape('TownPage_20160220233415.txt')
