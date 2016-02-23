@@ -2,4 +2,6 @@
 
 require 'kiyomizu'
 
-oparation = 
+cleaner = Kiyomizu::Crawlers::Common.new
+
+p cleaner.organize_excel('list.csv')

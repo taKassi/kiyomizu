@@ -18,12 +18,16 @@ module Kiyomizu
       end
     end
 
-    # csvデータの整理整頓
-    def organize(file_name)
-      open("#{Dir.pwd}/inputs/#{file_name}", "r") do |file|
-        puts file
+    # Excelデータを扱いやすいように配列へ
+    def organize_excel(flie_name)
+      open("#{Dir.pwd}/inputs/#{flie_name}",
+                                "rb:Shift_JIS:UTF-8", undef: :replace) do |data|
+        excel_array = []
+        CSV.new(data).each do |row|
+          excel_array << row
+        end
+        excel_array
       end
     end
-
   end
 end
