@@ -1,7 +1,7 @@
 require "csv"
 
 module Kiyomizu
-  module FileMaker
+  module OperateFile
 
     # csvファイルを出力
     def create_csv(array, original_name = "")
@@ -17,5 +17,13 @@ module Kiyomizu
         file.puts data
       end
     end
+
+    # csvデータの整理整頓
+    def organize(file_name)
+      open("#{Dir.pwd}/inputs/#{file_name}", "r") do |file|
+        puts file
+      end
+    end
+
   end
 end

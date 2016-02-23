@@ -1,13 +1,13 @@
 require "nokogiri"
 require "open-uri"
-require "kiyomizu/file_maker"
+require "kiyomizu/operate_file"
 
 module Kiyomizu
   module Crawlers
     class Common
       attr_reader :name, :scraped_file_name
 
-      include Kiyomizu::FileMaker
+      include Kiyomizu::OperateFile
 
       def initialize
         @name = self.class.to_s.scan(/\w+$/)[0]

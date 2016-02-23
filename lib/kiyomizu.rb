@@ -1,11 +1,11 @@
 require "kiyomizu/crawlers/jbma"
 require "kiyomizu/crawlers/townpage"
-require "kiyomizu/file_maker"
+require "kiyomizu/operate_file"
 require "kiyomizu/version"
 
 module Kiyomizu
-  # FileMaker Moduleの取り来み
-  include Kiyomizu::FileMaker
+  # OperateFile Moduleの取り来み
+  include Kiyomizu::OperateFile
 
   # jbma用のインスタンスを作成
   def self.jbma
