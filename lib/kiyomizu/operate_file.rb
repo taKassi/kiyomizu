@@ -5,8 +5,7 @@ module Kiyomizu
 
     # csvファイルを出力
     def create_csv(array, original_name = "")
-      headers = %w(名前 住所 TEL FAX)
-      data = CSV.generate('', write_headers: true, headers: headers) { |csv|
+      data = CSV.generate('', write_headers: false) { |csv|
         array.each do |info|
           csv << info
         end

@@ -1,7 +1,3 @@
 #!/usr/bin/env ruby
 
 require 'kiyomizu'
-
-cleaner = Kiyomizu::Crawlers::Common.new
-
-p cleaner.organize_excel('list.csv')

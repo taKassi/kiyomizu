@@ -11,6 +11,7 @@ TOWNPAGE_URLS = ''
 # 作成物ファイルの削除
 CLEAN.include('htmls/*.txt')
 CLEAN.include('outputs/*.csv')
+CLEAN.include('inputs/*.csv')
 
 Rake::TestTask.new(:test) do |t|
   t.libs << "test"
