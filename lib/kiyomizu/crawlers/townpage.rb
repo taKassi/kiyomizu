@@ -54,16 +54,30 @@ module Kiyomizu
         sections.compact!
 
         # sectionsか住所を抽出
+        # 住所のベースを抽出
         addresses = sections.map { |section|
                       section[1].gsub("地図・ナビ", "")
                      }
+
+        post_numbers = []
+        districts    = []
+        others       = []
+        addresses.map do |address|
+          address = address.match(/(^〒\d+-\d+)\S東京都(.+区)(.+$)/)
+          # 郵便番号抽出
+          post_numbers << address[1]
+          # 市町村区抽出
+          districts << address[2]
+          # その他
+          others << address[3]
+        end
 
         #  sectionsからTEL情報を抽出
         tels = sections.map { |section|
           section[2].gsub("(代)", "")
          }
 
-         info = names.zip(addresses, tels).uniq
+         info = names.zip(post_numbers, districts, others, tels).uniq
          info = info.delete_if  { |factor| factor[2] == nil }
       end
     end

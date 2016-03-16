@@ -5,8 +5,9 @@ require "kiyomizu"
 
 # jbmaのURL
 JBMA_URL = 'http://www.j-bma.or.jp/meibo/corp.php'
-# タウンページのURLを文字列か配列で設定
-TOWNPAGE_URLS = ''
+
+# TownPageのURL
+TOWNPAGE_URLS = []
 
 # 作成物ファイルの削除
 CLEAN.include('htmls/*.txt')
