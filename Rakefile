@@ -3,12 +3,6 @@ require "rake/testtask"
 require "rake/clean"
 require "kiyomizu"
 
-# jbmaのURL
-JBMA_URL = 'http://www.j-bma.or.jp/meibo/corp.php'
-
-# TownPageのURL
-TOWNPAGE_URLS = []
-
 # 作成物ファイルの削除
 CLEAN.include('htmls/*.txt')
 CLEAN.include('outputs/*.csv')
@@ -22,6 +16,7 @@ task :default => :test
 
 # jbma用クローラー
 namespace :jbma do
+  JBMA_URL = 'http://www.j-bma.or.jp/meibo/corp.php'
   crawler = Kiyomizu.jbma
 
   desc 'jbmaのHTMLをコピー'
@@ -40,7 +35,17 @@ end
 
 # TownPage用クローラー
 namespace :townpage do
+  # TownPageのURL
+  TOWNPAGE_URLS = []
+  for i in 1..5 do
+    TOWNPAGE_URLS << "http://itp.ne.jp/result/?kw=%95%B6%8B%9E%8B%E6%91%E5%92%CB%82%52%92%9A%96%DA&dcad=13&sr=1&evdc=1&num=50&pg=#{i}"
+  end
   crawler = Kiyomizu.townpage
+
+  desc 'URLの配列チェック'
+  task :cheack do
+    puts TOWNPAGE_URLS
+  end
 
   desc 'タウンページのHTMLをコピー'
   task :copy do
