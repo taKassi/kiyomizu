@@ -37,9 +37,6 @@ end
 namespace :townpage do
   # TownPageのURL
   TOWNPAGE_URLS = []
-  for i in 1..5 do
-    TOWNPAGE_URLS << "http://itp.ne.jp/result/?kw=%95%B6%8B%9E%8B%E6%91%E5%92%CB%82%52%92%9A%96%DA&dcad=13&sr=1&evdc=1&num=50&pg=#{i}"
-  end
   crawler = Kiyomizu.townpage
 
   desc 'URLの配列チェック'
@@ -49,7 +46,11 @@ namespace :townpage do
 
   desc 'タウンページのHTMLをコピー'
   task :copy do
-    crawler.copy_sorce(TOWNPAGE_URLS)
+    if TOWNPAGE_URLS.empty?
+      puts "RakefileでURLを設定してください。"
+    else
+      crawler.copy_sorce(TOWNPAGE_URLS)
+    end
   end
 
   desc 'タウンページの解析と抽出してcsvファイルを作成'
