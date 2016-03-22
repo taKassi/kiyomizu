@@ -22,4 +22,14 @@ crawler.scrape('#copy_sorceで作成したhtmlsフォルダ内のファイル名
 
 # CSVファイルを出力
 crawler.create_csv('csvにしたい配列')
+
+```
+
+## Kiyomizu::OperateFileモジュール
+ファイル操作を行う
+
+```ruby
+# エクセルファイルから作成したcsvファイルから配列を戻す
+# ※ エクセルからcsvに変換することは事前に必要。
+Kiyomizu::OperateFile.organize_excel
 ```

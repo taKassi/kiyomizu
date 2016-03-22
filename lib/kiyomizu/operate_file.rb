@@ -18,7 +18,7 @@ module Kiyomizu
     end
 
     # Excelデータを扱いやすいように配列へ
-    def organize_excel(flie_name)
+    def self.organize_excel(flie_name)
       open("#{Dir.pwd}/inputs/#{flie_name}",
                                 "rb:Shift_JIS:UTF-8", undef: :replace) do |data|
         excel_array = []
