@@ -5,8 +5,9 @@ require "kiyomizu"
 
 # 作成物ファイルの削除
 CLEAN.include('htmls/*.txt')
-CLEAN.include('outputs/*.csv')
 CLEAN.include('inputs/*.csv')
+CLEAN.include('outputs/*.csv')
+CLEAN.include('outputs/done/*.csv')
 
 Rake::TestTask.new(:test) do |t|
   t.libs << "test"
@@ -46,8 +47,11 @@ namespace :townpage do
 
   desc 'タウンページのHTMLをコピー'
   task :copy do
+    # 使用例 豊洲
+    # crawler.get_urls(11.0, "13108/13108030", "public")
+
     if TOWNPAGE_URLS.empty?
-      puts "RakefileでURLを設定してください。"
+      puts "lib/kiyomizu.rbでURLを設定する必要あり。"
     else
       crawler.copy_sorce(TOWNPAGE_URLS)
     end
