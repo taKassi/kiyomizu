@@ -85,6 +85,15 @@ module Kiyomizu
 
         info
       end
+
+      # タウンぺージのURLを
+      def get_urls(max_page, id, genre)
+        pages = max_page / 50
+        pages = pages.ceil
+        for i in 1..pages do
+          TOWNPAGE_URLS << "http://itp.ne.jp/tokyo/#{id}/genre_dir/#{genre}/pg/#{i}/?sr=1&nad=1&num=50"
+        end
+      end
     end
   end
 end
