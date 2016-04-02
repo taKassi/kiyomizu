@@ -4,6 +4,13 @@ module Kiyomizu
   module Crawlers
     class JBma < Kiyomizu::Crawlers::Common
 
+      attr_reader :url
+
+      def initalize
+        super
+        @url = 'http://www.j-bma.or.jp/meibo/corp.php'
+      end
+
       # ソースコードの解析
       def scrape(file_name_in_htmls_derectory)
         doc = Nokogiri::HTML(open("#{Dir.pwd}/htmls/#{file_name_in_htmls_derectory}"))

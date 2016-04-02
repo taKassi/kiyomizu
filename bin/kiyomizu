@@ -2,4 +2,4 @@
 
 require 'kiyomizu'
 
-datas = Kiyomizu::Crawlers::Common.new
+# crawler = Kiyomizu::Crawlers::Common.new

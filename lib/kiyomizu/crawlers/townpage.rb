@@ -5,9 +5,16 @@ module Kiyomizu
   module Crawlers
     class TownPage < Kiyomizu::Crawlers::Common
 
-      # Kiyomizu::Crawlers::Common#copy_sorceをオーバーライド
+      attr_accessor :urls, :genre
 
-      def copy_sorce(urls)
+      def initialize
+        super
+        @urls  = []
+        @genre = ""
+      end
+
+      # Kiyomizu::Crawlers::Common#copy_sorceをオーバーライド
+      def copy_sorce(urls = self.urls)
         options = { depth_limit: 0,
                     skip_query_string: true,
                     delay: 1 }
@@ -87,11 +94,11 @@ module Kiyomizu
       end
 
       # タウンぺージのURLを
-      def get_urls(max_page, id, genre)
-        pages = max_page / 50
+      def get_urls(float_count, id, genre = self.genre)
+        pages = float_count / 50
         pages = pages.ceil
         for i in 1..pages do
-          TOWNPAGE_URLS << "http://itp.ne.jp/tokyo/#{id}/genre_dir/#{genre}/pg/#{i}/?sr=1&nad=1&num=50"
+          self.urls << "http://itp.ne.jp/tokyo/#{id}/genre_dir/#{genre}/pg/#{i}/?sr=1&nad=1&num=50"
         end
       end
     end
