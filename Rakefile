@@ -41,7 +41,7 @@ namespace :townpage do
   # crawler.get_urls(34.0, "13108/13108042", crawler.genre)
 
   desc 'URLの配列チェック'
-  task :cheack do
+  task :check do
     puts crawler.urls
     puts crawler.genre
   end
